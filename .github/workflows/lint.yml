@@ -1,0 +1,51 @@
+name: Lint
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  actionlint:
+    name: Run actionlint
+
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 5
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@e3d2460bbb42d7710191569f88069044cfb9d8cf # v4.2.2
+
+      - name: Run actionlint
+        run: |
+          set -x
+          docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" rhysd/actionlint
+
+  secretlint:
+    name: Run secretlint
+
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@e3d2460bbb42d7710191569f88069044cfb9d8cf # v4.2.2
+
+      - name: Run secretlint
+        run: |
+          set -x
+          docker run -v `pwd`:`pwd` -w `pwd` --rm -it secretlint/secretlint secretlint "**/*"
