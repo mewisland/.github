@@ -1,3 +1,6 @@
 {
-  "chat.promptFiles": true
+  "chat.promptFiles": true,
+  "conventionalCommits.scopes": [
+    ".github"
+  ]
 }
