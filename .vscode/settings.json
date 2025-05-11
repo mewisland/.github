@@ -1,6 +1,20 @@
 {
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true
+  },
   "chat.promptFiles": true,
+  "chat.promptFilesLocations": {
+    ".github/prompts": true
+  },
   "conventionalCommits.scopes": [
-    ".github"
+    ".github",
+    "deps",
+    "src",
+    "src/app",
+    "src/entities",
+    "src/features",
+    "src/shared",
+    "src/shared/ui",
+    "src/widgets"
   ]
 }
