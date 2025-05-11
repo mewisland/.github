@@ -1,4 +1,8 @@
-Your goal is to generate a new test code.
+---
+applyTo: "**/*.spec.ts"
+---
+
+Your goal is to generate a new unit test code.
 
 Requirements for the test code:
 

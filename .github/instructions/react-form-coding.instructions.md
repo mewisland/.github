@@ -1,3 +1,7 @@
+---
+applyTo: "**/ui/**/*.tsx"
+---
+
 Your goal is to generate a new React form component.
 
 Ask for the form name and fields if not provided.
